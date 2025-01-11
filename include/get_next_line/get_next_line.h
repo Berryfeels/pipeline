@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stdi-pum <stdi-pum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 21:28:40 by stdi-pum          #+#    #+#             */
-/*   Updated: 2024/09/12 21:30:24 by stdi-pum         ###   ########.fr       */
+/*   Created: 2024/02/18 14:10:30 by stdi-pum          #+#    #+#             */
+/*   Updated: 2024/03/01 19:32:41 by stdi-pum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "printf/ft_printf.h"
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+//# include <limits.h>
+//# include <stdarg.h>
+//# include <stddef.h>
 # include <stdio.h>
-# include <sys/wait.h>
+# include <stdlib.h>
+//# include <string.h>
+# include <unistd.h>
+# include <sys/uio.h>
+# include <sys/types.h>
 
-int     execute(char *cmd_argv, char **envp);
-int     open_file(char *argv, int i);
-void	error(void);
-void	here_doc(char *limiter, int argc);
+int		getlen(char *str);
+char	*ft_strjoin_get_next_line(char *s1, char *s2);
+char	*get_next_line(int fd);
+void	emptybuff(char *buff);
 
 #endif

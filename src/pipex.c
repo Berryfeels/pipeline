@@ -43,12 +43,13 @@ static int	ft_read_end_process(char **argv, int *pipe_end, char **envp)
 {
 	int	fd;
 
-	fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644); 
+	fd = open(argv[4], O_WRONLY | O_CREAT | O_APPEND, 0644); 
 	if (fd == -1)
 	{
 		perror("Error");
 		return (1);
 	}
+
 	dup2 (pipe_end[0], STDIN_FILENO);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
